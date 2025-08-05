@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthik Nambiar - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #000000;
+            overflow-x: hidden;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #000000;
+            border-bottom: 2px solid #333333;
+            z-index: 1000;
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        .nav-menu li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .nav-menu li a:hover {
+            border: 2px solid #ffffff;
+            background-color: #ffffff;
+            color: #000000;
+            transform: translateY(-2px);
+        }
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            position: relative;
+        }
+        .hero-content {
+            animation: fadeInUp 1.5s ease-out;
+        }
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #cccccc);
+            background-clip: text;
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            color: #cccccc;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        section {
+            padding: 100px 0;
+            margin: 0;
+        }
+        .section-dark {
+            background-color: #000000;
+        }
+        .section-light {
+            background-color: #111111;
+        }
+        h2 {
+            font-size: 3.5rem;
+            color: #ffffff;
+            margin-bottom: 50px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 800;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: #ffffff;
+            margin: 20px auto;
+            animation: expandWidth 1s ease-out 0.5s both;
+        }
+        h3 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background-color: #222222;
+            border: 3px solid #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #cccccc;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .skill-category {
+            background-color: #222222;
+            padding: 40px;
+            border: 2px solid #333333;
+            transition: all 0.3s ease;
+        }
+        .skill-category:hover {
+            border-color: #ffffff;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #333333;
+            transition: all 0.3s ease;
+        }
+        li:hover {
+            color: #ffffff;
+            padding-left: 20px;
+            border-bottom-color: #ffffff;
+        }
+        li::before {
+            content: '▶';
+            color: #ffffff;
+            margin-right: 15px;
+            font-size: 0.8rem;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .project {
+            background-color: #111111;
+            border: 2px solid #333333;
+            padding: 40px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .project:hover {
+            border-color: #ffffff;
+            transform: scale(1.03);
+            box-shadow: 0 25px 50px rgba(255, 255, 255, 0.1);
+        }
+        .project h3 {
+            border-bottom: 2px solid #ffffff;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .project-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 20px;
+        }
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 25px;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+        a:hover {
+            background-color: #ffffff;
+            color: #000000;
+            transform: translateY(-3px);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .contact-item {
+            background-color: #222222;
+            padding: 40px;
+            text-align: center;
+            border: 2px solid #333333;
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover {
+            border-color: #ffffff;
+            background-color: #ffffff;
+            color: #000000;
+            transform: translateY(-10px);
+        }
+        .contact-item:hover a {
+            color: #000000;
+            border-color: #000000;
+        }
+        .contact-item:hover a:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100px;
+            }
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #000000;
+                flex-direction: column;
+                gap: 0;
+                border-top: 2px solid #333333;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #333333;
+            }
+
+            .nav-menu li a {
+                display: block;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 3rem;
+                letter-spacing: 3px;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 4px;
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <!--I added Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Portfolio</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Header/Hero Section -->
+    <header id="home">
+        <div class="hero-content">
+            <h1>Karthik Nambiar</h1>
+            <p class="subtitle">Full Stack Developer</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section-light">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    [This is a placeholder for my photo]
+                </div>
+                <div class="about-text">
+                    <p>I am a passionate and dedicated full-stack developer. My journey in technology began with a curiosity for problem-solving and has evolved into a comprehensive skill set spanning frontend development, backend architecture, and database design.</p>
+                    <p>I specialize in creating scalable, user-focused applications that bridge the gap between technical complexity and intuitive user experiences. My approach combines clean, maintainable code with innovative design solutions to deliver products that not only meet but exceed client expectations.</p>
+                    <p>When I'm not coding, I enjoy exploring emerging technologies, and a little bit of open-world gaming, not just play, but to also understand how it is made.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-dark">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CS</li>
+                        <li>JavaScript (ES6+) & TypeScript</li>
+                        <li>React.js & Next.js</li>
+                        <li>Responsive Design & Mobile-First</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <ul>
+                        <li>Node.js & Express.js</li>
+                        <li>Python & Django/Flask</li>
+                        <li>RESTful API Design</li>
+                        <li>Microservices Architecture</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Database & DevOps</h3>
+                    <ul>
+                        <li>PostgreSQL & MySQL</li>
+                        <li>MongoDB & NoSQL</li>
+                        <li>Redis & Caching Strategies</li>
+                        <li>Docker & Containerization</li>
+                        <li>AWS & Cloud Services</li>
+                        <li>CI/CD & Deployment Automation</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <ul>
+                        <li>Git & Version Control</li>
+                        <li>Webpack & Build Tools</li>
+                        <li>Adobe Photoshop & Design Collaboration</li>
+                        <li>Agile & Scrum Methodologies</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-light">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project">
+                    <h3>E-Commerce Platform</h3>
+                    <p>A comprehensive full-stack e-commerce solution built with React.js, Node.js, and PostgreSQL. Features include user authentication, product management, shopping cart functionality, secure payment processing with Stripe, inventory tracking, and an admin dashboard for comprehensive store management.</p>
+                    <div class="project-links">
+                        <a href="https://kart-mart.vercel.app/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/KarthikNambiar135/KartMart" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>KodeWithMusic</h3>
+                    <p>An immersive web-based platform combining music and coding education. Built with React.js and Flask, it offers interactive coding challenges synced with music theory, real-time code feedback, and creative audio-visual experiences. Ideal for learners seeking a fun and engaging way to develop programming and musical skills simultaneously.</p>
+                    <div class="project-links">
+                        <a href="https://kode-with-music.vercel.app/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/KarthikNambiar135/KodeWithMusic" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>My Project Gallery</h3>
+                    <p>A responsive portfolio showcase built with HTML, CSS, and JavaScript. Features a dynamic grid layout with category-based filtering, smooth animations, lightbox previews, and optimized performance across devices. Designed to highlight individual projects with visual clarity and intuitive navigation.</p>
+                    <div class="project-links">
+                        <a href="https://my-project-gallery-nine.vercel.app/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/KarthikNambiar135/MyProjectGallery" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-dark">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p style="text-align: center; font-size: 1.4rem; margin-bottom: 40px; color: #cccccc;">Ready to bring your ideas to life? Let's discuss how we can work together to create something amazing.</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <h3>Email</h3>
+                    <a href="karthiknambiar135@gmail.com">CONTACT ME</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">💼</span>
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/karthik-nambiar-739957289/" target="_blank">Connect with me</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🚀</span>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/KarthikNambiar135" target="_blank">View my work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
