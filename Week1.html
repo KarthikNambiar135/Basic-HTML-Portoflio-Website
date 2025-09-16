@@ -270,7 +270,7 @@
         .contact-item:hover {
             border-color: #ffffff;
             background-color: #ffffff;
-            color: #000000;
+            color: #ffffff;
             transform: translateY(-10px);
         }
         .contact-item:hover a {
@@ -532,22 +532,17 @@
     </section>
 
     <script>
-        // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
 
         mobileMenuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
-
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
             });
         });
-
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -563,6 +558,7 @@
     </script>
 </body>
 </html>
+
 
 
 
